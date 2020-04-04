@@ -13,11 +13,22 @@ class Game(object):
     def __repr__(self):
         return str(self)
     
-    def get_title(self):
-        return self.title
+    @property
+    def title(self):
+        return self._title
     
-    def set_title(self, value):
-        self.title = value
+    @title.setter
+    def title(self, title):
+        self._title = title
+          
+    @property
+    def violence(self):
+        return self._violence
+    
+    @violence.setter
+    def violence(self, violence):
+        self._violence = violence
+        
         
     def get_category(self):
         return self.category
