@@ -2,11 +2,13 @@
 class Game(object):
     
     def __init__(self):
-        self.title = ''    
-        self.category = ''
+        self._title = ''
+        self._category = ''
+        self._year = ''
+        self._violence = ''
     
     def __str__(self):
-        return 'Game({}, {})'.format(self.title, self.category)
+        return 'Game({}, {})'.format(self._title, self._violence)
     
     def __repr__(self):
         return str(self)
@@ -24,4 +26,4 @@ class Game(object):
         self.category = value
         
     def get_list(self):
-        return [self.title, self.category]
+        return [self._title, self._category]
