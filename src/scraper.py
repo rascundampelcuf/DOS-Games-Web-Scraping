@@ -8,9 +8,8 @@ from game import Game
 class Scraper():
       
     def __init__(self):
-        self.url = 'http://www.xtdos.com/'
+        self.url = 'http://www.dosgamesarchive.com/games/'
         self.games = []
-        self.categories = {}
           
     def __download_html(self, url):
         # Get data from url
@@ -27,7 +26,7 @@ class Scraper():
         print(divs[0].value)
     
     def scrape(self):
-        print('Web scraping of classic games by "XTDOS"...')
+        print('Web scraping of classic games by "DOSGAMES"...')
         page = self.__download_html(self.url)
         self.__get_categories_links(page)
         
