@@ -20,15 +20,17 @@ class Scraper():
         soup = BeautifulSoup(html.content, 'html.parser')
         return soup
     
-    def __get_categories_links(self, page):
-        # Get categories links from 'cat-item' tag
-        divs = page.findAll('li', 'cat-item')
-        print(divs[0].value)
+    def __get_games_table(self, page):
+        # Get games from table with 'table_games' tag
+        table_games = page.find('table', {'class': 'table_games'})
+        games = table_games.findAll('tr')
+        games.pop(0) # First element contains the table headers
+        return games
     
     def scrape(self):
         print('Web scraping of classic games by "DOSGAMES"...')
         page = self.__download_html(self.url)
-        self.__get_categories_links(page)
+        games = self.__get_games_table(page)
         
 scraper = Scraper()
 scraper.scrape()
