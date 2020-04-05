@@ -31,13 +31,13 @@ class Scraper():
         games.pop(0) # First element contains the table headers
         return games
     
-    def __is_the_game_violent(self, cell, the_game):
-        violence = cell.find('td', 'violence')
-        the_game._violence = bool(violence)
+    def __get_info_from_game(self, game):
+        cells = game.findAll('td', recursive=False)
+        the_game = Game(
     
-    def __get_title_from_game(self, cell, the_game):
-        title = cell.find('a').string
-        the_game._title = title
+    def scrape(self):
+        print('Web scraping of classic games by "DOSGAMES"...')
+        page = self.__download_html(self.url)
         
         self.__is_the_game_violent(cell, the_game)
         print(the_game)
