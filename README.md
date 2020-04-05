@@ -42,6 +42,10 @@ The objective of this project was to complete a Web Scraping in Python of the we
 ```shell
 $ pip install requests
 ```
+> `csv`
+```shell
+$ pip install csv
+```
 > `bs4`
 ```shell
 $ pip install bs4
