@@ -34,6 +34,12 @@ class Scraper():
     def __get_info_from_game(self, game):
         cells = game.findAll('td', recursive=False)
         the_game = Game(
+            title = cells[1].find('a').string,
+            violence = bool(cells[1].find('td', 'violence')),
+            category = cells[2].find('a').string,
+            year = cells[4].find('a').string
+        )
+        self.games.append(the_game)
     
     def scrape(self):
         print('Web scraping of classic games by "DOSGAMES"...')
