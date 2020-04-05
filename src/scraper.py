@@ -20,7 +20,11 @@ class Scraper():
         soup = BeautifulSoup(html.content, 'html.parser')
         return soup
     
-    def __get_games_table(self, page):
+    def __get_max_page(self, page):
+        pagination = page.find('div', 'pagination_top')
+        list_pages = pagination.findAll('li')
+        return int(list_pages[-2].find('a').string)
+        
         # Get games from table with 'table_games' tag
         table_games = page.find('table', {'class': 'table_games'})
         games = table_games.findAll('tr', recursive=False)
