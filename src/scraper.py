@@ -25,6 +25,7 @@ class Scraper():
         list_pages = pagination.findAll('li')
         return int(list_pages[-2].find('a').string)
         
+    def __get_table_games(self, page):
         # Get games from table with 'table_games' tag
         table_games = page.find('table', {'class': 'table_games'})
         games = table_games.findAll('tr', recursive=False)
@@ -44,9 +45,15 @@ class Scraper():
     def scrape(self):
         print('Web scraping of classic games by "DOSGAMES"...')
         page = self.__download_html(self.url)
+        max_page = self.__get_max_page(page)
         
         first = True        
         for i in range(1, max_page + 1):
+            print('Scraping page', i)
+            if first:
+                first = not first
+            else:
+                page = self.__download_html(self.url + str(i) + '/')
         
             games = self.__get_table_games(page)
             for game in games:
@@ -54,16 +61,16 @@ class Scraper():
        
     def data2csv(self, filename):
         # Overwrite to the specified file.
+        # Create it if it does not exist.
+        csvwriter = csv.writer(open("../data/" + filename, "w", newline='\n', encoding="utf-8"))
         
-    
-    def scrape(self):
-        print('Web scraping of classic games by "DOSGAMES"...')
-        page = self.__download_html(self.url)
-        games = self.__get_games_table(page)
-        # for game in games:
-        print(len(games))
-        self.__get_info_from_game(games[0])
-            # break
-        
+        # Dump all the data with CSV format
+        csvwriter.writerow(['Title', 'Category', 'Year', 'Violence'])
+        for game in self.games:
+            csvwriter.writerow([game.get_list()])
+            
+            
+output_file = "data.csv"
 scraper = Scraper()
 scraper.scrape()
+scraper.data2csv(output_file)
