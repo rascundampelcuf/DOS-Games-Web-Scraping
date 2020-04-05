@@ -10,7 +10,7 @@ class Scraper():
     def __init__(self):
         self.url = 'http://www.dosgamesarchive.com/games/'
         self.games = []
-          
+    
     def __download_html(self, url):
         # Get data from url
         html = requests.get(url)
@@ -23,7 +23,7 @@ class Scraper():
     def __get_games_table(self, page):
         # Get games from table with 'table_games' tag
         table_games = page.find('table', {'class': 'table_games'})
-        games = table_games.findAll('tr')
+        games = table_games.findAll('tr', recursive=False)
         games.pop(0) # First element contains the table headers
         return games
     
