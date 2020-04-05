@@ -68,9 +68,3 @@ class Scraper():
         csvwriter.writerow(['Title', 'Category', 'Year', 'Violence'])
         for game in self.games:
             csvwriter.writerow(game.get_list())
-            
-            
-output_file = "data.csv"
-scraper = Scraper()
-scraper.scrape()
-scraper.data2csv(output_file)

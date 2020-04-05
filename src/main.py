@@ -1,4 +1,7 @@
 
 from scraper import Scraper
 
-Scraper()
+output_file = "data.csv"
+scraper = Scraper()
+scraper.scrape()
+scraper.data2csv(output_file)
