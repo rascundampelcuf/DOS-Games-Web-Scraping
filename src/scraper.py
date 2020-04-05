@@ -67,7 +67,7 @@ class Scraper():
         # Dump all the data with CSV format
         csvwriter.writerow(['Title', 'Category', 'Year', 'Violence'])
         for game in self.games:
-            csvwriter.writerow([game.get_list()])
+            csvwriter.writerow(game.get_list())
             
             
 output_file = "data.csv"
