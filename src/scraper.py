@@ -39,15 +39,15 @@ class Scraper():
         print('Web scraping of classic games by "DOSGAMES"...')
         page = self.__download_html(self.url)
         
-        self.__is_the_game_violent(cell, the_game)
-        print(the_game)
-    
-    def __get_info_from_game(self, game):
-        the_game = Game()
-        cells = game.findAll('td')
+        first = True        
+        for i in range(1, max_page + 1):
         
-        # print(cells[1])
-        self.__get_title_from_game(cells[1], the_game)
+            games = self.__get_table_games(page)
+            for game in games:
+                self.__get_info_from_game(game)
+       
+    def data2csv(self, filename):
+        # Overwrite to the specified file.
         
     
     def scrape(self):
