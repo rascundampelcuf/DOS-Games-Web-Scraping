@@ -2,7 +2,7 @@
 
 # DOS Games Web-scraping
 
-## Descripció
+## Description
 This is a personal mini-project of web scraping.
 
 The objective of this project was to complete a Web Scraping in Python of the website *"[DOS GAMES ARCHIVE](https://www.dosgamesarchive.com/)"*. From this website a list of all the games has been created and a data set with the created data has been generated.
